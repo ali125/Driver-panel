@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import Title from "@/components/common/Title";
 import { ContractDetail } from "@/@types/contracts";
 import ContractUploadFile from "./ContractUploadFile";
@@ -6,12 +6,15 @@ import { UploadFile } from "antd/lib";
 import { BASE_STORAGE } from "@/constants";
 import { Button } from "antd";
 import ContractDetailContent from "./ContractDetailContent";
+import { useRouter } from "nextjs-toploader/app";
 
 type Props = {
   contract: ContractDetail;
 };
 
 const ContractDetailView: React.FC<Props> = ({ contract }) => {
+  const router = useRouter();
+
   const defaultFileList: UploadFile[] = useMemo(() => {
     const docs = contract.params_array.contract_doc_operator;
 
@@ -31,6 +34,11 @@ const ContractDetailView: React.FC<Props> = ({ contract }) => {
     }
     return [];
   }, [contract]);
+
+  const handleRedirectSign = useCallback(() => {
+    router.push(`/contract/token`);
+  }, [router]);
+
   return (
     <>
       <div>
@@ -58,6 +66,7 @@ const ContractDetailView: React.FC<Props> = ({ contract }) => {
               shape="default"
               size="large"
               className="w-full text-lg font-bold"
+              onClick={handleRedirectSign}
             >
               مشاهده و امضا قرارداد
             </Button>
