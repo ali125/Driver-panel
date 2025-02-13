@@ -23,6 +23,7 @@ const Profile = () => {
   if (!user.data) return <Loading />;
 
   const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
+    console.log({ values });
     // user.updateUserInfo({
     //   ...values,
     //   email: values.email || undefined,

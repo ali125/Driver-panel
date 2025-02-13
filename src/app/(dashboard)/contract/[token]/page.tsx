@@ -12,6 +12,8 @@ const ContractViewTokenPage: React.FC = () => {
 
   const token = params.token as string;
 
+  console.log({ token });
+
   const contractId = "5593";
   const key = "person_pickup";
 

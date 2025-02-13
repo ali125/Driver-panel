@@ -22,6 +22,10 @@ const ChangePassword = () => {
     currentPassword,
     password,
   }) => {
+    console.log({
+      currentPassword,
+      password,
+    });
     // user.updateUserPassword(currentPassword ?? "", password);
   };
   return (
